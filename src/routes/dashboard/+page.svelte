@@ -13,5 +13,8 @@
 </svelte:head>
 
 <section class="px-2 max-w-6xl mx-auto mt-2">
-	<h1 class="text-3xl font-semibold capitalize">Welcome, {user.user_metadata.name}</h1>
+	<a href="/dashboard/create-event" class="btn btn-primary">Create Event</a>
+	<div class="">
+
+	</div>
 </section>
