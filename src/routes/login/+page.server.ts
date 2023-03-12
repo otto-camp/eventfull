@@ -6,7 +6,6 @@ export const actions: Actions = {
 			provider: 'google'
 		});
 
-		console.log(data);
 		console.log(error);
 
 		if (error) {
