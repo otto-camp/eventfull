@@ -12,6 +12,7 @@ export interface Database {
       event: {
         Row: {
           date: string | null
+          description: string | null
           id: number
           inserted_at: string
           location: string | null
@@ -21,6 +22,7 @@ export interface Database {
         }
         Insert: {
           date?: string | null
+          description?: string | null
           id?: number
           inserted_at?: string
           location?: string | null
@@ -30,6 +32,7 @@ export interface Database {
         }
         Update: {
           date?: string | null
+          description?: string | null
           id?: number
           inserted_at?: string
           location?: string | null
