@@ -37,7 +37,7 @@
 					<li><a href="/">Courses</a></li>
 					<li><a href="/">Resources</a></li>
 					{#if data.session}
-						<li><a href="/dashboard" class="btn btn-primary">Dashboard</a></li>
+						<li><a href="/dashboard" data-sveltekit-preload-data class="btn btn-primary">Dashboard</a></li>
 						<li><a href="/logout" class="btn btn-outline">Sign Out</a></li>
 					{:else}
 						<li>
@@ -68,7 +68,7 @@
 				<a href="/" class="btn btn-ghost w-full justify-start">Resources</a>
 				{#if data.session}
 					<div class="w-full flex gap-2">
-						<a href="/dashboard" class="btn flex-1 btn-primary">Dashboard</a>
+						<a href="/dashboard" data-sveltekit-preload-data class="btn flex-1 btn-primary">Dashboard</a>
 						<a href="/logout" class="btn btn-outline">Sign Out</a>
 					</div>
 				{:else}
