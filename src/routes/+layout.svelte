@@ -2,6 +2,7 @@
 	import { invalidateAll } from '$app/navigation';
 	import { supabase } from '$lib/supabase';
 	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
 	import type { LayoutData } from './$types';
 
 	import './styles.css';
@@ -26,7 +27,7 @@
 	};
 </script>
 
-<div class="app" data-theme="bumblebee">
+<div class="app">
 	<header class="bg-base-200 border-base-content border-b">
 		<div class="navbar max-w-6xl mx-auto">
 			<div class="flex-1">
@@ -37,7 +38,9 @@
 					<li><a href="/">Courses</a></li>
 					<li><a href="/">Resources</a></li>
 					{#if data.session}
-						<li><a href="/dashboard" data-sveltekit-preload-data class="btn btn-primary">Dashboard</a></li>
+						<li>
+							<a href="/dashboard" data-sveltekit-preload-data class="btn btn-primary">Dashboard</a>
+						</li>
 						<li><a href="/logout" class="btn btn-outline">Sign Out</a></li>
 					{:else}
 						<li>
@@ -46,6 +49,16 @@
 					{/if}
 				</ul>
 			</div>
+			<form method="post" class="flex">
+				<button
+					class="btn btn-primary"
+					formaction="/?/setTheme&theme=business&redirectTo={$page.url.pathname}">Dark</button
+				>
+				<button
+					class="btn btn-secondary"
+					formaction="/?/setTheme&theme=corporate&redirectTo={$page.url.pathname}">Light</button
+				>
+			</form>
 			<button on:click={toggle} aria-label="Open the Menu" class="btn btn-ghost md:hidden">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -68,7 +81,9 @@
 				<a href="/" class="btn btn-ghost w-full justify-start">Resources</a>
 				{#if data.session}
 					<div class="w-full flex gap-2">
-						<a href="/dashboard" data-sveltekit-preload-data class="btn flex-1 btn-primary">Dashboard</a>
+						<a href="/dashboard" data-sveltekit-preload-data class="btn flex-1 btn-primary"
+							>Dashboard</a
+						>
 						<a href="/logout" class="btn btn-outline">Sign Out</a>
 					</div>
 				{:else}
