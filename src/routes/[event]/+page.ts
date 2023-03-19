@@ -1,13 +1,13 @@
 import { supabase } from '$lib/supabase';
 import type { PageLoad } from './$types';
-import { fail } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit';
 export const load: PageLoad = async ({ params: { event } }) => {
 	if (event !== undefined) {
-		const { data, error } = await supabase.from('event').select('*').eq('id', event);
+		const { data, error: err } = await supabase.from('event').select('*').eq('id', event);
 
-		if (error) {
-			fail(400, {
-				error
+		if (err) {
+			throw error(404, {
+				message: err.message
 			});
 		}
 

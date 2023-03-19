@@ -6,7 +6,7 @@
 	import type { PageData } from '../$types';
 	import dayjs from 'dayjs';
 	import format from 'dayjs/plugin/customParseFormat';
-	import type { Event } from '../../Database';
+	import type { Event } from '../../Types';
 	dayjs.extend(format);
 
 	export let data: PageData;
@@ -18,7 +18,6 @@
 	onMount(async () => {
 		const { data, error } = await supabase.from('event').select('*');
 		events = data;
-		console.log(data);
 	});
 </script>
 
@@ -39,8 +38,8 @@
 						class="flex flex-col gap-2 border cursor-pointer border-black rounded-md lg:hover:scale-105 lg:hover:shadow-2xl lg:hover:shadow-black/30 transition-all duration-200"
 					>
 						<img
-							src="https://picsum.photos/500/200"
-							alt="event"
+							src={event.image_url ? event.image_url : 'https://picsum.photos/500/200'}
+							alt={event.name}
 							class="rounded-t-md border-b-4 rounded-b-lg"
 							style={`border-color:${randomColor()}`}
 						/>

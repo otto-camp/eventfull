@@ -14,8 +14,8 @@
 		<div class="flex flex-col gap-4 items-center justify-center mt-6 md:mt-12 lg:mt-18">
 			<h1 class="font-medium text-xl sm:text-2xl md:text-3xl lg:text-5xl">{data.event[0].name}</h1>
 			<img
-				src="https://picsum.photos/2000/500"
-				alt="data.event"
+				src={data.event[0].image_url ? data.event[0].image_url : 'https://picsum.photos/500/200'}
+				alt={data.event[0].name}
 				width="auto"
 				height="500"
 				class="rounded-md object-cover h-[250px] md:h-[500px]"
@@ -40,7 +40,11 @@
 					{data.event[0].location}
 				</span>
 			</div>
-			<p class="text-lg md:text-2xl">{data.event[0].description}</p>
+			<p class="text-lg md:text-2xl">
+				{data.event[0].long_description
+					? data.event[0].long_description
+					: data.event[0].description}
+			</p>
 		</div>
 	{/if}
 </section>

@@ -29,11 +29,12 @@
 		Create Event
 	</h1>
 	<form
-		action="/dashboard/create-event"
+		enctype="multipart/form-data"
 		method="post"
-		class="max-w-md mx-auto mt-8 sm:mt-12 md:mt-20 lg:mt-32"
+		action="/dashboard/create-event"
+		class="my-8 sm:my-12 md:my-20 flex flex-col gap-4 items-center"
 	>
-		<div class="flex flex-col gap-4">
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 			<div>
 				<label for="event name" class="font-medium text-base-content block">Name</label>
 				<input
@@ -63,7 +64,44 @@
 					class="input input-bordered w-full focus-visible:outline-base-content border-base-content"
 				/>
 			</div>
+
 			<div>
+				<label for="picture" class="font-medium text-base-content block">Picture</label>
+				<input
+					type="file"
+					accept="image/*"
+					id="picture"
+					name="picture"
+					class="file-input file-input-bordered w-full focus-visible:outline-base-content border-base-content"
+				/>
+			</div>
+			<div>
+				<label for="type" class="font-medium text-base-content block">Type</label>
+				<select
+					name="type"
+					id="type"
+					class="select select-bordered w-full focus-visible:outline-base-content border-base-content"
+				>
+					<option disabled selected>Choose event type</option>
+					{#each types as type}
+						<option value={type}>{type}</option>
+					{/each}
+				</select>
+			</div>
+			<div>
+				<label for="category" class="font-medium text-base-content block">Category</label>
+				<select
+					name="category"
+					id="category"
+					class="select select-bordered w-full focus-visible:outline-base-content border-base-content"
+				>
+					<option disabled selected>Choose event Category</option>
+					{#each categories as category}
+						<option value={category}>{category}</option>
+					{/each}
+				</select>
+			</div>
+			<div class="md:col-span-2">
 				<label for="description" class="font-medium text-base-content block"
 					>Short Description</label
 				>
@@ -74,7 +112,7 @@
 					class="input input-bordered w-full focus-visible:outline-base-content border-base-content"
 				/>
 			</div>
-			<div>
+			<div class="md:col-span-2">
 				<label for="longDescription" class="font-medium text-base-content block"
 					>Long Description</label
 				>
@@ -85,25 +123,7 @@
 					class="textarea textarea-bordered w-full resize-none focus-visible:outline-base-content border-base-content"
 				/>
 			</div>
-			<div>
-				<label for="type" class="font-medium text-base-content block">Type</label>
-				<select name="type" id="type" class="select select-bordered w-full">
-					<option disabled selected>Choose event type</option>
-					{#each types as type}
-						<option value={type}>{type}</option>
-					{/each}
-				</select>
-			</div>
-			<div>
-				<label for="category" class="font-medium text-base-content block">Type</label>
-				<select name="category" id="category" class="select select-bordered w-full">
-					<option disabled selected>Choose event Category</option>
-					{#each categories as category}
-						<option value={category}>{category}</option>
-					{/each}
-				</select>
-			</div>
-			<button type="submit" class="btn md:text-2xl btn-primary normal-case">Event</button>
 		</div>
+		<button type="submit" class="btn md:text-2xl btn-primary normal-case btn-wide">Event</button>
 	</form>
 </section>
