@@ -3,10 +3,10 @@
 	import { supabase } from '$lib/supabase';
 	import type { User } from '@supabase/supabase-js';
 	import { onMount } from 'svelte';
-	import type { PageData } from '../$types';
+	import type { PageData } from './$types';
 	import dayjs from 'dayjs';
 	import format from 'dayjs/plugin/customParseFormat';
-	import type { Event } from '../../Types';
+	import type { Event } from '../../../Types';
 	dayjs.extend(format);
 
 	export let data: PageData;
@@ -33,7 +33,7 @@
 	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 		{#if events}
 			{#each events as event}
-				<a href={`/${event.id}`}>
+				<a href={`/${event.name?.toLowerCase().replace(/\s+/g, '-')}-${event.id}`}>
 					<article
 						class="flex flex-col gap-2 border cursor-pointer border-black rounded-md lg:hover:scale-105 lg:hover:shadow-2xl lg:hover:shadow-black/30 transition-all duration-200"
 					>

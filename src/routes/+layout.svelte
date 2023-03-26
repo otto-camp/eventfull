@@ -2,7 +2,6 @@
 	import { invalidateAll } from '$app/navigation';
 	import { supabase } from '$lib/supabase';
 	import { onMount } from 'svelte';
-
 	import './styles.css';
 
 	onMount(() => {
@@ -16,12 +15,12 @@
 			subscription.unsubscribe();
 		};
 	});
+
+	
 </script>
 
 <div class="app">
-	<main class="min-h-screen">
-		<slot />
-	</main>
+	<slot />
 
 	<footer class="footer footer-center p-10 bg-base-200 text-base-content">
 		<div>
