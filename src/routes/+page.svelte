@@ -1,11 +1,8 @@
 <script lang="ts">
-	import ThemeSwitch from '$lib/components/ThemeSwitch.svelte';
+	import ThemeSwitch from '$lib/components/ThemeSelect.svelte';
 	import type { LayoutData } from './$types';
 	export let data: LayoutData;
 	let open = false;
-	const toggle = () => {
-		open = !open;
-	};
 </script>
 
 <svelte:head>
@@ -16,7 +13,7 @@
 <header class="bg-base-200 border-base-content border-b">
 	<div class="navbar max-w-6xl mx-auto">
 		<div class="navbar-start lg:hidden">
-			<button on:click={toggle} aria-label="Open the Menu" class="btn btn-ghost ">
+			<button on:click={() => (open = !open)} aria-label="Open the Menu" class="btn btn-ghost ">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					class="h-5 w-5"

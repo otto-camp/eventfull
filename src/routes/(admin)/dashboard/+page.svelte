@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { randomColor } from '$lib/RandomColor';
+	import { randomColor } from '$lib/utils/RandomColor';
 	import { supabase } from '$lib/supabase';
 	import type { User } from '@supabase/supabase-js';
 	import { onMount } from 'svelte';
