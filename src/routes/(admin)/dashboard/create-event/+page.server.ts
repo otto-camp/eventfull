@@ -46,6 +46,12 @@ export const actions: Actions = {
 					long_description: rawData.get('longDescription'),
 					image_url: PUBLIC_SUPABASE_URL + '/storage/v1/object/public/event/' + data.path
 				});
+
+				if (eventError) {
+					throw error(404, {
+						message: eventError.message
+					});
+				}
 			}
 		}
 

@@ -57,18 +57,19 @@
 			</div>
 			<nav aria-label="sidebar navigation">
 				<ul class="menu menu-vertical">
-					<li><a href="/" class="text-lg sm:text-xl md">Link</a></li>
-					<li><a href="/" class="text-lg sm:text-xl md">Link</a></li>
-					<li><a href="/" class="text-lg sm:text-xl md">Link</a></li>
-					<li><a href="/" class="text-lg sm:text-xl md">Link</a></li>
-					<li><a href="/" class="text-lg sm:text-xl md">Link</a></li>
+					<li class="hover-bordered"><a href="/" class="text-lg sm:text-xl md">Link</a></li>
+					<li class="hover-bordered"><a href="/" class="text-lg sm:text-xl md">Link</a></li>
+					<li class="hover-bordered"><a href="/" class="text-lg sm:text-xl md">Link</a></li>
+					<li class="hover-bordered"><a href="/" class="text-lg sm:text-xl md">Link</a></li>
+					<li class="hover-bordered"><a href="/" class="text-lg sm:text-xl md">Link</a></li>
 				</ul>
 			</nav>
 		</div>
+		<ThemeSwitch />
 	</aside>
 {:else}
 	<aside
-		class="lg:fixed lg:block hidden top-0 bottom-0 left-0 p-2 w-64 overflow-y-auto bg-base-100 border-r border-y rounded-r-lg border-primary"
+		class="lg:fixed lg:block hidden top-0 bottom-0 left-0 p-2 w-64 overflow-y-auto bg-base-100 border-r border-primary"
 	>
 		<div class="grid gap-8">
 			<div class="flex justify-center">

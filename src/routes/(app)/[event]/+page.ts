@@ -14,7 +14,9 @@ export const load: PageLoad = async ({ params: { event } }) => {
 			});
 		}
 
-		if (data !== null || data!== undefined) {
+		if (data !== null || data !== undefined) {
+			await supabase.rpc('increment', { id: data[0].id });
+
 			return {
 				event: data
 			};

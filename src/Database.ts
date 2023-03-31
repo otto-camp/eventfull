@@ -56,6 +56,26 @@ export interface Database {
           updated_at?: string
         }
       }
+      event_statistics: {
+        Row: {
+          created_at: string | null
+          enrolled: number | null
+          event_id: number
+          viewed: number | null
+        }
+        Insert: {
+          created_at?: string | null
+          enrolled?: number | null
+          event_id?: number
+          viewed?: number | null
+        }
+        Update: {
+          created_at?: string | null
+          enrolled?: number | null
+          event_id?: number
+          viewed?: number | null
+        }
+      }
       registration: {
         Row: {
           attendee_count: number | null
@@ -87,7 +107,12 @@ export interface Database {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      increment: {
+        Args: {
+          id: number
+        }
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never

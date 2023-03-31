@@ -1,13 +1,10 @@
 <script lang="ts">
-	import { randomColor } from '$lib/utils/RandomColor';
 	import { supabase } from '$lib/supabase';
 	import type { User } from '@supabase/supabase-js';
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
-	import dayjs from 'dayjs';
-	import format from 'dayjs/plugin/customParseFormat';
 	import type { Event } from '../../../Types';
-	dayjs.extend(format);
+	import EventCard from '$lib/components/cards/EventCard.svelte';
 
 	export let data: PageData;
 	let user: User;
@@ -27,48 +24,30 @@
 </svelte:head>
 
 <section class="px-2 max-w-6xl mx-auto mt-2">
-	<div class="flex mb-6">
-		<a href="/dashboard/create-event" class="btn btn-primary">Create Event</a>
-	</div>
-	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+	<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+		<div class="h-[200px] bg-accent rounded-box shadow-xl shadow-base-300">
+			<div class="flex flex-col justify-between h-full p-4">
+				<h2 class="text-accent-content text-4xl text-center font-medium">
+					Create a Event
+				</h2>
+				<a href="/dashboard/create-event" class="btn btn-outline btn-secondary bg-opacity-30">Create Event</a>
+			</div>
+		</div>
+		<div class="h-[200px] bg-info rounded-box shadow-xl shadow-base-300">
+			<div class="flex flex-col justify-between h-full p-4">
+				<h2 class="text-info-content text-4xl text-center font-medium">
+					Lorem ipsum dolor sit.
+				</h2>
+			</div>
+		</div>
+		<div class="h-[200px] bg-red-700 rounded-box shadow-xl shadow-base-300" />
+		<div class="h-[200px] bg-red-700 rounded-box shadow-xl shadow-base-300" />
+		<div class="h-[200px] bg-red-700 rounded-box shadow-xl shadow-base-300" />
+		<div class="h-[200px] bg-red-700 rounded-box shadow-xl shadow-base-300" />
 		{#if events}
 			{#each events as event}
-				<a href={`/${event.name?.toLowerCase().replace(/\s+/g, '-')}-${event.id}`}>
-					<article
-						class="flex flex-col gap-2 border cursor-pointer border-black rounded-md lg:hover:scale-105 lg:hover:shadow-2xl lg:hover:shadow-black/30 transition-all duration-200"
-					>
-						<img
-							src={event.image_url ? event.image_url : 'https://picsum.photos/500/200'}
-							alt={event.name}
-							class="rounded-t-md border-b-4 rounded-b-lg"
-							style={`border-color:${randomColor()}`}
-						/>
-						<div class="p-4">
-							<h2 class="font-medium text-lg sm:text-xl md:text-2xl truncate">{event.name}</h2>
-							<div class="flex justify-between my-2">
-								<time>{dayjs(event.date).format('YYYY MMMM DD - HH:mm')}</time>
-								<span class="flex gap-2 items-center justify-center">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										width="24"
-										height="24"
-										viewBox="0 0 384 512"
-										><path
-											d="M168.3 499.2C116.1 435 0 279.4 0 192C0 85.96 85.96 0 192 0C298 0 384 85.96 384 192C384 279.4 267 435 215.7 499.2C203.4 514.5 180.6 514.5 168.3 499.2H168.3zM192 256C227.3 256 256 227.3 256 192C256 156.7 227.3 128 192 128C156.7 128 128 156.7 128 192C128 227.3 156.7 256 192 256z"
-										/></svg
-									>
-									{event.location}
-								</span>
-							</div>
-							<p class="text-sm sm:text-base line-clamp-3">
-								{event.description}
-							</p>
-						</div>
-					</article>
-				</a>
+				<EventCard {event} />
 			{/each}
-		{:else}
-			<h1>Nothing to see here</h1>
 		{/if}
 	</div>
 </section>
