@@ -59,21 +59,21 @@ export interface Database {
       event_statistics: {
         Row: {
           created_at: string | null
-          enrolled: number | null
+          enrolled: number
           event_id: number
-          viewed: number | null
+          viewed: number
         }
         Insert: {
           created_at?: string | null
-          enrolled?: number | null
+          enrolled?: number
           event_id?: number
-          viewed?: number | null
+          viewed?: number
         }
         Update: {
           created_at?: string | null
-          enrolled?: number | null
+          enrolled?: number
           event_id?: number
-          viewed?: number | null
+          viewed?: number
         }
       }
       registration: {
@@ -107,7 +107,7 @@ export interface Database {
       [_ in never]: never
     }
     Functions: {
-      increment: {
+      update_event_statistic_viewed: {
         Args: {
           id: number
         }

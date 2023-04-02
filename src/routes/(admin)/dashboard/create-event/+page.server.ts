@@ -1,5 +1,5 @@
 import { PUBLIC_SUPABASE_URL } from '$env/static/public';
-import { error, fail } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit';
 import { randomUUID } from 'crypto';
 import type { Actions } from './$types';
 export const actions: Actions = {
@@ -19,7 +19,7 @@ export const actions: Actions = {
 		}
 
 		if (authError) {
-			fail(400, {
+			throw error(400, {
 				message: authError.message
 			});
 		}

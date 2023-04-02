@@ -1,6 +1,7 @@
 import { supabase } from '$lib/supabase';
 import type { PageLoad } from './$types';
 import { error } from '@sveltejs/kit';
+
 export const load: PageLoad = async ({ params: { event } }) => {
 	if (event !== undefined) {
 		const i = event.lastIndexOf('-');
@@ -15,7 +16,10 @@ export const load: PageLoad = async ({ params: { event } }) => {
 		}
 
 		if (data !== null || data !== undefined) {
-			await supabase.rpc('increment', { id: data[0].id });
+			const { data: d, error: er } = await supabase.rpc('update_event_statistic_viewed', {
+				id: data[0].id
+			});
+			er ? console.error(er) : console.log(d);
 
 			return {
 				event: data

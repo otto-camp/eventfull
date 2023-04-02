@@ -11,9 +11,9 @@
 		class="flex flex-col gap-2 border cursor-pointer border-black rounded-md lg:hover:scale-105 lg:hover:shadow-2xl lg:hover:shadow-black/30 transition-all duration-200"
 	>
 		<img
-			src={event.image_url ? event.image_url : 'https://picsum.photos/500/200'}
+			src={event.image_url ? event.image_url : 'https://picsum.photos/2000/800'}
 			alt={event.name}
-			class="rounded-t-md border-b-4 rounded-b-lg"
+			class="rounded-t-md border-b-4 rounded-b-lg h-[200px] object-cover"
 			style={`border-color:${randomColor()}`}
 		/>
 		<div class="p-4">
@@ -29,7 +29,7 @@
 					{event.location}
 				</span>
 			</div>
-			<p class="text-sm sm:text-base line-clamp-3">
+			<p class="text-sm sm:text-base h-12 line-clamp-3">
 				{event.description}
 			</p>
 		</div>
