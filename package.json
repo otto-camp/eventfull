@@ -41,6 +41,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@sentry/node": "^7.46.0",
+		"@sentry/svelte": "^7.46.0",
 		"@supabase/supabase-js": "^2.10.0",
 		"daisyui": "^2.51.3",
 		"dayjs": "^1.11.7",

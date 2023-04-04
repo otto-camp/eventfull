@@ -1,12 +1,13 @@
-import { fail, redirect, type Actions } from '@sveltejs/kit';
+import { error, redirect, type Actions } from '@sveltejs/kit';
 
 export const actions: Actions = {
 	default: async ({ locals: { supabase } }) => {
-		const { error } = await supabase.auth.signOut();
+		const { error: authError } = await supabase.auth.signOut();
 
-		if (error) {
-			return fail(400, {
-				message: error
+		if (authError) {
+			throw error(404, {
+				message: authError.message,
+				code: authError.name
 			});
 		}
 

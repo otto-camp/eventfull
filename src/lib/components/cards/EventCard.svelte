@@ -2,11 +2,18 @@
 	import { randomColor } from '$lib/utils/RandomColor';
 	import dayjs from 'dayjs';
 	import type { Event } from '../../../Types';
+	import { supabase } from '$lib/supabase';
 
 	export let event: Event;
+
+	const handleView = async () => {
+		await supabase.rpc('update_event_statistic_viewed', {
+			id: event.id
+		});
+	};
 </script>
 
-<a href={`/${event.name?.toLowerCase().replace(/\s+/g, '-')}-${event.id}`}>
+<a href={`/${event.name?.toLowerCase().replace(/\s+/g, '-')}-${event.id}`} on:click={handleView}>
 	<article
 		class="flex flex-col gap-2 border cursor-pointer border-black rounded-md lg:hover:scale-105 lg:hover:shadow-2xl lg:hover:shadow-black/30 transition-all duration-200"
 	>

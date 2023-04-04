@@ -14,13 +14,15 @@ export const actions: Actions = {
 
 		if (user === null || user === undefined) {
 			throw error(404, {
-				message: 'User not found'
+				message: 'User not found',
+				code: ''
 			});
 		}
 
 		if (authError) {
 			throw error(400, {
-				message: authError.message
+				message: authError.message,
+				code: authError.name
 			});
 		}
 
@@ -31,7 +33,8 @@ export const actions: Actions = {
 					.upload(user.email + '/' + randomUUID(), picture);
 				if (storageError) {
 					throw error(404, {
-						message: storageError.message
+						message: storageError.message,
+						code: storageError.name
 					});
 				}
 				const { error: eventError } = await supabase.from('event').insert({
@@ -49,7 +52,8 @@ export const actions: Actions = {
 
 				if (eventError) {
 					throw error(404, {
-						message: eventError.message
+						message: eventError.message,
+						code: eventError.code
 					});
 				}
 			}

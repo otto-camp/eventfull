@@ -1,19 +1,22 @@
-import { fail, redirect, type Actions } from '@sveltejs/kit';
+import { redirect, type Actions, error } from '@sveltejs/kit';
 
 export const actions: Actions = {
 	default: async ({ locals: { supabase } }) => {
-		const { data, error } = await supabase.auth.signInWithOAuth({
+		const { data, error: authError } = await supabase.auth.signInWithOAuth({
 			provider: 'google'
 		});
 
-		console.log(error);
+		console.log(authError);
 
-		if (error) {
-			return fail(400, {
-				message: error
+		if (authError) {
+			throw error(400, {
+				message: authError.message,
+				code: authError.name
 			});
 		}
 
-		throw redirect(303, data.url);
+		if (data.url) {
+			throw redirect(303, data.url);
+		}
 	}
 };
