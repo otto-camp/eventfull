@@ -11,7 +11,7 @@
 	$: mobile = innerWidth < 1024;
 
 	const links = [
-		{ href: '/dashboard/create-event', name: 'Create Event' },
+		{ href: '/dashboard/', name: 'Home' },
 		{ href: '/dashboard/create-event', name: 'Create Event' },
 		{ href: '/dashboard/settings', name: 'Settings' }
 	];
@@ -67,7 +67,7 @@
 				</div>
 				<div class="flex items-center gap-4 flex-col">
 					<div class="avatar">
-						<div class="w-24 rounded-full ring ring-primary ring-offset-2 ring-offset-base-300">
+						<div class="w-24 rounded-full ring ring-primary ring-offset-4 ring-offset-base-300">
 							<img src={user?.user_metadata.avatar_url} alt={user?.email} />
 						</div>
 					</div>
@@ -97,7 +97,7 @@
 				</div>
 				<div class="flex items-center gap-4 flex-col">
 					<div class="avatar">
-						<div class="w-24 rounded-full ring ring-primary ring-offset-2 ring-offset-base-300">
+						<div class="w-24 rounded-full ring ring-primary ring-offset-4 ring-offset-base-300">
 							<img src={user?.user_metadata.avatar_url} alt={user?.email} />
 						</div>
 					</div>

@@ -1,20 +1,23 @@
 <script lang="ts">
 	import { supabase } from '$lib/supabase';
-	import type { User } from '@supabase/supabase-js';
+	import type { PostgrestError, User } from '@supabase/supabase-js';
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 	import type { Event } from '../../../Types';
 	import EventCard from '$lib/components/cards/EventCard.svelte';
+	import EventTableCard from '$lib/components/cards/EventTableCard.svelte';
 
 	export let data: PageData;
 	let user: User;
 	let events: Event[] | null;
+	let error: PostgrestError | null;
 
 	data.session ? (user = data.session.user) : {};
 
 	onMount(async () => {
-		const { data, error } = await supabase.from('event').select('*');
+		const { data, error: err } = await supabase.from('event').select('*');
 		events = data;
+		error = err;
 	});
 </script>
 
@@ -24,11 +27,23 @@
 </svelte:head>
 
 <section class="px-2 max-w-6xl mx-auto mt-2">
-	<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+	{#if error}
+		<p>{error.message}</p>
+	{/if}
+
+	<div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+		{#if events}
+			{#each events as event}
+				<EventTableCard {event} />
+			{/each}
+		{/if}
+	</div>
+
+	<!-- <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
 		{#if events}
 			{#each events as event}
 				<EventCard {event} />
 			{/each}
 		{/if}
-	</div>
+	</div> -->
 </section>

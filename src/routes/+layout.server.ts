@@ -5,4 +5,3 @@ export const load = (async ({ locals: { getSession } }) => {
 		session: getSession()
 	};
 }) satisfies LayoutServerLoad;
-

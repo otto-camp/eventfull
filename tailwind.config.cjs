@@ -2,12 +2,10 @@
 module.exports = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
-		extend: {
-
-		}
+		extend: {}
 	},
-	plugins: [require('daisyui'), require('@tailwindcss/line-clamp'),],
+	plugins: [require('daisyui'), require('@tailwindcss/line-clamp')],
 	daisyui: {
-		themes: ["halloween", "cmyk"]
+		themes: ['halloween', 'cmyk']
 	}
 };

@@ -15,8 +15,6 @@
 			subscription.unsubscribe();
 		};
 	});
-
-	
 </script>
 
 <div class="app">
