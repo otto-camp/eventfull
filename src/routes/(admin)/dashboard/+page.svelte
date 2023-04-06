@@ -31,7 +31,7 @@
 		<p>{error.message}</p>
 	{/if}
 
-	<div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+	<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 		{#if events}
 			{#each events as event}
 				<EventTableCard {event} />
