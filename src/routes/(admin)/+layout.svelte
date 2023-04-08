@@ -1,5 +1,13 @@
 <script lang="ts">
-	import ThemeSwitch from '$lib/components/ThemeSwitch.svelte';
+	import {
+		ArrowLeftOnRectangle,
+		Bars3,
+		Briefcase,
+		Cog6Tooth,
+		Home,
+		Icon,
+		XMark
+	} from 'svelte-hero-icons';
 	import { fly } from 'svelte/transition';
 	import type { LayoutData } from './$types';
 
@@ -11,9 +19,9 @@
 	$: mobile = innerWidth < 1024;
 
 	const links = [
-		{ href: '/dashboard/', name: 'Home' },
-		{ href: '/dashboard/create-event', name: 'Create Event' },
-		{ href: '/dashboard/settings', name: 'Settings' }
+		{ href: '/dashboard/', name: 'Home', logo: Home },
+		{ href: '/dashboard/create-event', name: 'Create Event', logo: Briefcase },
+		{ href: '/dashboard/settings', name: 'Settings', logo: Cog6Tooth }
 	];
 </script>
 
@@ -22,21 +30,9 @@
 <header class="block lg:hidden bg-base-200 border-base-content">
 	<nav class="navbar">
 		<div class="navbar-start">
-			<button on:click={() => (open = !open)} class="btn btn-ghost"
-				><svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="h-5 w-5"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke="currentColor"
-					><path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M4 6h16M4 12h8m-8 6h16"
-					/></svg
-				></button
-			>
+			<button on:click={() => (open = !open)} class="btn btn-ghost p-2"
+				><Icon src={Bars3} size="24" />
+			</button>
 		</div>
 		<a href="/" class="navbar-center btn btn-ghost normal-case text-2xl">Event</a>
 		<span class="navbar-end" />
@@ -52,18 +48,9 @@
 		<div class="grid h-full content-between">
 			<div class="flex flex-col gap-8">
 				<div class="flex justify-end">
-					<button class="btn btn-ghost" on:click={() => (open = false)}
-						><svg
-							class="fill-current"
-							width="24"
-							height="24"
-							viewBox="0 0 512 512"
-							xmlns="http://www.w3.org/2000/svg"
-							><path
-								d="M443.6,387.1L312.4,255.4l131.5-130c5.4-5.4,5.4-14.2,0-19.6l-37.4-37.6c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4  L256,197.8L124.9,68.3c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4L68,105.9c-5.4,5.4-5.4,14.2,0,19.6l131.5,130L68.4,387.1  c-2.6,2.6-4.1,6.1-4.1,9.8c0,3.7,1.4,7.2,4.1,9.8l37.4,37.6c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1L256,313.1l130.7,131.1  c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1l37.4-37.6c2.6-2.6,4.1-6.1,4.1-9.8C447.7,393.2,446.2,389.7,443.6,387.1z"
-							/></svg
-						></button
-					>
+					<button class="btn btn-ghost p-2" on:click={() => (open = false)}
+						><Icon src={XMark} size="24" />
+					</button>
 				</div>
 				<div class="flex items-center gap-4 flex-col">
 					<div class="avatar">
@@ -77,13 +64,19 @@
 					<ul class="menu menu-vertical">
 						{#each links as link}
 							<li class="hover-bordered">
-								<a href={link.href} class="text-lg sm:text-xl">{link.name}</a>
+								<a href={link.href} class="text-lg sm:text-xl"
+									><Icon src={link.logo} size="24" /> {link.name}</a
+								>
 							</li>
 						{/each}
 					</ul>
 				</nav>
 			</div>
-			<ThemeSwitch />
+			<form action="/logout" method="post" class="m-0 p-0">
+				<button type="submit" class="btn w-full justify-start gap-4"
+					><Icon src={ArrowLeftOnRectangle} size="24" /> Sign Out</button
+				>
+			</form>
 		</div>
 	</aside>
 {:else}
@@ -107,13 +100,19 @@
 					<ul class="menu menu-vertical">
 						{#each links as link}
 							<li class="hover-bordered">
-								<a href={link.href} class="text-xl">{link.name}</a>
+								<a href={link.href} class="text-xl"
+									><Icon src={link.logo} size="24" /> {link.name}</a
+								>
 							</li>
 						{/each}
 					</ul>
 				</nav>
 			</div>
-			<ThemeSwitch />
+			<form action="/logout" method="post" class="m-0 p-0">
+				<button type="submit" class="btn w-full justify-start gap-4"
+					><Icon src={ArrowLeftOnRectangle} size="24" /> Sign Out</button
+				>
+			</form>
 		</div>
 	</aside>
 {/if}

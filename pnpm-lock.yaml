@@ -27,6 +27,7 @@ specifiers:
   supabase: ^1.42.5
   svelte: ^3.54.0
   svelte-check: ^3.0.1
+  svelte-hero-icons: ^5.0.0
   tailwindcss: ^3.2.7
   tslib: ^2.4.1
   typescript: ^4.9.3
@@ -62,6 +63,7 @@ devDependencies:
   supabase: 1.42.5
   svelte: 3.55.1
   svelte-check: 3.0.4_pehl75e5jsy22vp33udjja4soi
+  svelte-hero-icons: 5.0.0
   tailwindcss: 3.2.7_postcss@8.4.21
   tslib: 2.5.0
   typescript: 4.9.5
@@ -453,6 +455,10 @@ packages:
       '@sentry/types': 7.46.0
       tslib: 1.14.1
     dev: false
+
+  /@steeze-ui/heroicons/2.2.2:
+    resolution: {integrity: sha512-VUkgSAbjLzsEuF4kDQDESANb/NNxqhkOMnrzD1VhB3tSGr7wVZ5FKS7aM2QZcKXjziwR6dbt7Nhs3fpZhqOi1A==}
+    dev: true
 
   /@supabase/auth-helpers-shared/0.3.0_ku2vntnma2imfrsyohnkxzette:
     resolution: {integrity: sha512-6lKhVMBZnGdFelpZyvQDBQSOY+pglS6a5U4ieAqfKQ/rx3rSjRASR3UGh7V+el1re3xYe3ddVBWXw16rdVAzrQ==}
@@ -2379,6 +2385,13 @@ packages:
       - sass
       - stylus
       - sugarss
+    dev: true
+
+  /svelte-hero-icons/5.0.0:
+    resolution: {integrity: sha512-xKMI/Z0f/6831I0R1YKJjVbAw9VBD6XKysvng6LtomlS4n3ZD1lZNAfLrrCmnc1pmiLr/8sVeQA8kgHLQwYlRg==}
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      '@steeze-ui/heroicons': 2.2.2
     dev: true
 
   /svelte-hmr/0.15.1_svelte@3.55.1:

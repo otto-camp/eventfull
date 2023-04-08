@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { randomColor } from '$lib/utils/RandomColor';
 	import dayjs from 'dayjs';
 	import type { Event } from '../../../Types';
 	import { deleteEvent } from '$lib/db';
+	import { EllipsisVertical, Icon } from 'svelte-hero-icons';
 
 	export let event: Event;
 
@@ -15,26 +15,14 @@
 	};
 </script>
 
-<div class="flex flex-col border rounded-box border-base-content/30">
-	<div class="flex gap-2 bg-base-300 rounded-t-box">
-		<a
-			href={`/${event.name?.toLowerCase().replace(/\s+/g, '-')}-${event.id}`}
-			class="flex-1 pl-2 py-2 "
-		>
-			<h2 class="font-medium flex-1 text-lg md:text-xl">{event.name}</h2>
+<div class="flex flex-col">
+	<div class="flex justify-between gap-2 my-2">
+		<a href={`/${event.name?.toLowerCase().replace(/\s+/g, '-')}-${event.id}`}>
+			<h2 class="font-medium text-lg md:text-xl">{event.name}</h2>
 		</a>
 		<div class="dropdown dropdown-end dropdown-hover">
-			<button aria-label="event control" class="btn mr-1 p-2 btn-circle btn-ghost"
-				><svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="18"
-					height="18"
-					class="fill-current"
-					viewBox="0 0 448 512"
-					><path
-						d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
-					/></svg
-				></button
+			<button aria-label="event control" class=""
+				><Icon src={EllipsisVertical} size="24" /></button
 			>
 			<ul class="dropdown-content menu p-2 shadow-lg shadow-base-100 bg-base-100 rounded-box">
 				<li>
@@ -68,17 +56,16 @@
 			</ul>
 		</div>
 	</div>
-	<div class="flex">
+	<div class="gap-2 flex flex-col">
 		<a href={`/${event.name?.toLowerCase().replace(/\s+/g, '-')}-${event.id}`}>
 			<img
 				src={event.image_url ? event.image_url : 'https://picsum.photos/1000/1000'}
 				alt={event.name}
-				class="rounded-bl-box w-36 sm:w-52"
-				style={`border-color:${randomColor()}`}
+				class="rounded-box"
 			/>
 		</a>
 		<!-- details -->
-		<div class="flex flex-col gap-2 p-2">
+		<div class="flex flex-col gap-2">
 			<span class="flex gap-2 items-center">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

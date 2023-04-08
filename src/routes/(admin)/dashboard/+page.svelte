@@ -26,24 +26,24 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section class="px-2 max-w-6xl mx-auto mt-2">
+<section class="px-2 mt-2 max-w-7xl mx-auto">
 	{#if error}
 		<p>{error.message}</p>
 	{/if}
+	<h1 class="font-medium p-2 text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4">
+		My Events
+	</h1>
 
-	<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+	<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+		<div class="bg-base-content h-60  rounded-box" />
+		<div class="bg-base-content h-60  rounded-box" />
+		<div class="bg-base-content h-60  rounded-box" />
+	</div>
+	<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
 		{#if events}
 			{#each events as event}
 				<EventTableCard {event} />
 			{/each}
 		{/if}
 	</div>
-
-	<!-- <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-		{#if events}
-			{#each events as event}
-				<EventCard {event} />
-			{/each}
-		{/if}
-	</div> -->
 </section>
