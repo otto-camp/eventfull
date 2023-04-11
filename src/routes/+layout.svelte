@@ -22,7 +22,7 @@
 		<slot />
 	</main>
 
-	<footer class="footer footer-center mt-32 border-t border-t-base-content p-10 bg-base-200 text-base-content">
+	<footer class="footer footer-center border-t border-t-base-content p-10 bg-base-200 text-base-content">
 		<div>
 			<svg
 				width="50"

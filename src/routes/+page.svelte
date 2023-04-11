@@ -90,14 +90,14 @@
 </div>
 
 <section
-	class="sm:mt-12 md:py-20 backdrop-blur-[1px] bg-base-100/5 px-2 max-w-6xl mx-auto grid gap-12 md:text-white"
+	class="md:h-screen relative py-16 md:py-20 backdrop-blur-[1px] md:bg-base-100/5 px-2 max-w-6xl mx-auto grid gap-12 md:text-white"
 >
 	<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl md:text-center font-black">
 		Your Free, Simple Event Organizer
 	</h1>
-	<p class="text-lg font-medium md:px-24 md:text-center">
-		Create unforgettable events effortlessly with [TITLE]. Invite guests, track RSVPs, and
-		customize your page. Sign up now for the simple and free way to plan!
+	<p class="text-lg md:text-xl font-semibold md:px-24 md:text-center">
+		Create unforgettable events effortlessly with [TITLE]. Invite guests, track RSVPs, and customize
+		your page. Sign up now for the simple and free way to plan!
 	</p>
 	<div class="max-w-sm mx-auto flex gap-2">
 		{#if data.session}
@@ -107,7 +107,135 @@
 			<button class="btn btn-outline text-lg normal-case">Learn More</button>
 		{/if}
 	</div>
-	<!-- <div
-		class="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply origin-center filter blur-xl opacity-70 animate-blob"
-	/> -->
+	<div class="md:hidden">
+		<div
+			class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+			aria-hidden="true"
+		>
+			<div
+				class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+				style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
+			/>
+		</div>
+		<div
+			class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+			aria-hidden="true"
+		>
+			<div
+				class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+				style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
+			/>
+		</div>
+	</div>
+</section>
+
+<section class=" py-12">
+	<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="md:text-center">
+			<h2
+				class="mt-2 text-3xl leading-8 font-extrabold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl"
+			>
+				What our customers are saying
+			</h2>
+			<p class="mt-4 max-w-2xl text-xl md:mx-auto">
+				Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate
+				veritatis in accusamus quisquam.
+			</p>
+		</div>
+
+		<div class="mt-10">
+			<div class="space-y-8 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-8">
+				<div class="flex flex-col rounded-box shadow-lg shadow-base-content/30 overflow-hidden">
+					<div class="flex-shrink-0">
+						<img class="h-48 w-full object-cover" src="/test1.jpg" alt="" loading="lazy" />
+					</div>
+					<div class="flex-1 bg-white p-6 flex flex-col justify-between">
+						<div class="flex-1">
+							<p class="text-xl font-semibold text-gray-900">John Doe</p>
+							<p class="mt-3 text-base text-gray-500">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+								incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+								exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+							</p>
+						</div>
+						<div class="mt-6 flex items-center">
+							<div class="flex-shrink-0">
+								<img
+									class="h-16 w-16 rounded-full"
+									src="https://dummyimage.com/100x100/000/fff"
+									alt=""
+								/>
+							</div>
+							<div class="ml-3">
+								<p class="text-sm font-medium text-gray-900">CEO, Acme Inc.</p>
+								<a href="/" class="mt-1 text-sm text-gray-500 hover:text-gray-600 underline"
+									>www.acme.com</a
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="flex flex-col rounded-box shadow-lg shadow-base-content/30 overflow-hidden">
+					<div class="flex-shrink-0">
+						<img class="h-48 w-full object-cover" src="/test2.jpg" alt="" loading="lazy" />
+					</div>
+					<div class="flex-1 bg-white p-6 flex flex-col justify-between">
+						<div class="flex-1">
+							<p class="text-xl font-semibold text-gray-900">Jane Smith</p>
+							<p class="mt-3 text-base text-gray-500">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+								incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+								exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+							</p>
+						</div>
+						<div class="mt-6 flex items-center">
+							<div class="flex-shrink-0">
+								<img
+									class="h-16 w-16 rounded-full"
+									src="https://dummyimage.com/100x100/000/fff"
+									alt=""
+								/>
+							</div>
+							<div class="ml-3">
+								<p class="text-sm font-medium text-gray-900">CTO, XYZ Corp</p>
+								<a href="/" class="mt-1 text-sm text-gray-500 hover:text-gray-600 underline"
+									>www.xyzcorp.com</a
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="flex flex-col rounded-box shadow-lg shadow-base-content/30 overflow-hidden">
+					<div class="flex-shrink-0">
+						<img class="h-48 w-full object-cover" src="/test3.jpg" alt="" loading="lazy" />
+					</div>
+					<div class="flex-1 bg-white p-6 flex flex-col justify-between">
+						<div class="flex-1">
+							<p class="text-xl font-semibold text-gray-900">Bob Johnson</p>
+							<p class="mt-3 text-base text-gray-500">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+								incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+								exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+							</p>
+						</div>
+						<div class="mt-6 flex items-center">
+							<div class="flex-shrink-0">
+								<img
+									class="h-16 w-16 rounded-full"
+									src="https://dummyimage.com/100x100/000/fff"
+									alt=""
+								/>
+							</div>
+							<div class="ml-3">
+								<p class="text-sm font-medium text-gray-900">COO, Example Corp</p>
+								<a href="/" class="mt-1 text-sm text-gray-500 hover:text-gray-600 underline"
+									>www.examplecorp.com</a
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>

@@ -5,21 +5,21 @@ module.exports = {
 	theme: {
 		extend: {
 			animation: {
-				blob: "blob 7s infinite",
+				blob: "blob 15s infinite",
 			},
 			keyframes: {
 				blob: {
 					"0%": {
-						transform: "translate(0%, 50%) scale(1)"
+						transform: "scale(1)"
 					},
 					"33%": {
-						transform: "translate(50%, 50%) scale(1.5)",
+						transform: "scale(1.5)",
 					},
 					"66%": {
-						transform: "translate(100%, 50%) scale(2)",
+						transform: "scale(2)",
 					},
 					"100%": {
-						transform: "translate(0%, 50%) scale(1)",
+						transform: "scale(1)",
 					},
 				},
 			},

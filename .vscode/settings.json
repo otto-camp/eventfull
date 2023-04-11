@@ -1,4 +1,10 @@
 {
-	"cSpell.words": ["neoconfetti", "Postgrest"],
+	"cSpell.words": [
+		"consect",
+		"examplecorp",
+		"neoconfetti",
+		"Postgrest",
+		"xyzcorp"
+	],
 	"typescript.tsdk": "node_modules\\typescript\\lib"
 }
