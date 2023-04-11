@@ -4,7 +4,6 @@
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 	import type { Event } from '../../../Types';
-	import EventCard from '$lib/components/cards/EventCard.svelte';
 	import EventTableCard from '$lib/components/cards/EventTableCard.svelte';
 
 	export let data: PageData;
@@ -34,11 +33,14 @@
 		My Events
 	</h1>
 
-	<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-		<div class="bg-base-content h-60  rounded-box" />
-		<div class="bg-base-content h-60  rounded-box" />
-		<div class="bg-base-content h-60  rounded-box" />
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+		<div class="bg-base-content h-60 rounded-box" />
+		<div class="bg-base-content h-60 rounded-box" />
+		<div class="bg-base-content h-60 sm:col-span-2 lg:col-span-1 rounded-box" />
 	</div>
+
+	<hr class="border-t-2 my-4 border-base-content/50 rounded-full" />
+
 	<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
 		{#if events}
 			{#each events as event}

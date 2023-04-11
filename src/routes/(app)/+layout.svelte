@@ -29,8 +29,8 @@
 		</div>
 		<div class="hidden lg:inline-flex lg:navbar-center">
 			<ul class="menu menu-horizontal gap-2 px-1">
-				<li><a href="/">Courses</a></li>
-				<li><a href="/">Resources</a></li>
+				<li><a href="/about">About Us</a></li>
+				<li><a href="/services">Services</a></li>
 				<ThemeSwitch />
 			</ul>
 		</div>
@@ -62,8 +62,8 @@
 	</div>
 	{#if open}
 		<nav class="space-y-1 px-2 pt-2 pb-3 bg-base-200 lg:hidden">
-			<a href="/" class="btn btn-ghost w-full justify-start">Courses</a>
-			<a href="/" class="btn btn-ghost w-full justify-start">Resources</a>
+			<a href="/about" class="btn btn-ghost w-full justify-start">About Us</a>
+			<a href="/services" class="btn btn-ghost w-full justify-start">Services</a>
 			{#if data.session}
 				<div class="w-full flex gap-2">
 					<a href="/dashboard" data-sveltekit-preload-data class="btn flex-1 btn-primary"
