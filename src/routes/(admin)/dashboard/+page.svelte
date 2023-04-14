@@ -4,7 +4,7 @@
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 	import type { Event } from '../../../Types';
-	import EventTableCard from '$lib/components/cards/EventTableCard.svelte';
+	import DashboardEventCard from '$lib/components/cards/DashboardEventCard.svelte';
 
 	export let data: PageData;
 	let user: User;
@@ -39,12 +39,12 @@
 		<div class="bg-base-content h-60 sm:col-span-2 lg:col-span-1 rounded-box" />
 	</div>
 
-	<hr class="border-t-2 my-4 border-base-content/50 rounded-full" />
+	<hr class="border-t my-4 border-base-content rounded-full" />
 
-	<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+	<div class="grid grid-cols-1 xs:grid-cols-2 xl:grid-cols-3 gap-4">
 		{#if events}
 			{#each events as event}
-				<EventTableCard {event} />
+				<DashboardEventCard {event} />
 			{/each}
 		{/if}
 	</div>
