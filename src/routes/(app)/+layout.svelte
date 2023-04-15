@@ -30,7 +30,7 @@
 		<div class="hidden lg:inline-flex lg:navbar-center">
 			<ul class="menu menu-horizontal gap-2 px-1">
 				<li><a href="/about">About Us</a></li>
-				<li><a href="/services">Services</a></li>
+				<li><a href="/features">Features</a></li>
 				<ThemeSwitch />
 			</ul>
 		</div>
@@ -63,7 +63,7 @@
 	{#if open}
 		<nav class="space-y-1 px-2 pt-2 pb-3 bg-base-200 lg:hidden">
 			<a href="/about" class="btn btn-ghost w-full justify-start">About Us</a>
-			<a href="/services" class="btn btn-ghost w-full justify-start">Services</a>
+			<a href="/features" class="btn btn-ghost w-full justify-start">Features</a>
 			{#if data.session}
 				<div class="w-full flex gap-2">
 					<a href="/dashboard" data-sveltekit-preload-data class="btn flex-1 btn-primary"
@@ -90,7 +90,7 @@
 	<div class="grid grid-flow-col gap-4">
 		<a href="/" class="link link-hover">Home</a>
 		<a href="/about" class="link link-hover">About Us</a>
-		<a href="/services" class="link link-hover">Services</a>
+		<a href="/features" class="link link-hover">Features</a>
 		<a href="/" class="link link-hover">Press kit</a>
 	</div>
 	<div>
