@@ -1,8 +1,8 @@
 import { supabase } from '$lib/supabase';
-import type { PageLoad } from './$types';
+import type { PageServerLoad } from './$types';
 import { error } from '@sveltejs/kit';
 
-export const load: PageLoad = async ({ params: { event } }) => {
+export const load: PageServerLoad = async ({ params: { event } }) => {
 	if (event !== undefined) {
 		const i = event.lastIndexOf('-');
 		const url = event.slice(i + 1);
@@ -22,7 +22,7 @@ export const load: PageLoad = async ({ params: { event } }) => {
 				code: ''
 			});
 		}
-
+		
 		if (data !== null || data !== undefined) {
 			return {
 				event: data

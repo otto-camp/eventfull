@@ -11,7 +11,7 @@
 </svelte:head>
 
 <header class="bg-base-200 border-base-content border-b">
-	<div class="navbar max-w-6xl mx-auto">
+	<div class="navbar max-w-7xl mx-auto">
 		<div class="navbar-start lg:hidden">
 			<button on:click={() => (open = !open)} aria-label="Open the Menu" class="btn btn-ghost ">
 				<svg
@@ -34,7 +34,7 @@
 		</div>
 		<div class="hidden lg:inline-flex lg:navbar-center">
 			<ul class="menu menu-horizontal gap-2 px-1">
-				<li><a href="/about">About Us</a></li>
+				<li><a href="/events">Events</a></li>
 				<li><a href="/features">Features</a></li>
 				<ThemeSwitch />
 			</ul>
@@ -67,7 +67,7 @@
 	</div>
 	{#if open}
 		<nav class="space-y-1 px-2 pt-2 pb-3 bg-base-200 lg:hidden">
-			<a href="/about" class="btn btn-ghost w-full justify-start">About Us</a>
+			<a href="/events" class="btn btn-ghost w-full justify-start">Events</a>
 			<a href="/features" class="btn btn-ghost w-full justify-start">Features</a>
 			{#if data.session}
 				<div class="w-full flex gap-2">
@@ -90,7 +90,7 @@
 </div>
 
 <section
-	class="md:h-screen relative py-16 md:py-20 backdrop-blur-[1px] md:bg-base-100/5 px-2 max-w-6xl mx-auto grid gap-12 md:text-white"
+	class="md:h-screen relative py-16 md:py-20 backdrop-blur-[1px] md:bg-base-100/5 px-2 max-w-7xl mx-auto grid gap-12 md:text-white"
 >
 	<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl md:text-center font-black">
 		Your Free, Simple Event Organizer
@@ -104,10 +104,10 @@
 			<a href="/dashboard" class="btn btn-primary btn-wide text-lg normal-case">Go To Dashboard</a>
 		{:else}
 			<a href="/login" class="btn btn-primary flex-1 text-lg normal-case">Join Now</a>
-			<button class="btn btn-outline text-lg normal-case">Learn More</button>
+			<a href="/events" class="btn btn-outline text-lg normal-case">Events</a>
 		{/if}
 	</div>
-	<div class="md:hidden">
+	<div class="hidden">
 		<div
 			class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
 			aria-hidden="true"
@@ -130,7 +130,7 @@
 </section>
 
 <section class=" py-12">
-	<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="md:text-center">
 			<h2
 				class="mt-2 text-3xl leading-8 font-extrabold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl"
@@ -246,7 +246,7 @@
 	<div class="grid grid-flow-col gap-4">
 		<a href="/" class="link link-hover">Home</a>
 		<a href="/about" class="link link-hover">About Us</a>
-		<a href="/services" class="link link-hover">Services</a>
+		<a href="/features" class="link link-hover">Features</a>
 		<a href="/" class="link link-hover">Press kit</a>
 	</div>
 	<div>

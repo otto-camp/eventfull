@@ -122,12 +122,12 @@
 </main>
 
 <footer
-	class="footer footer-center border-t border-t-base-content p-10 bg-base-200 text-base-content"
+	class="footer footer-center border-t border-t-base-content lg:pl-64 p-10 bg-base-200 text-base-content"
 >
 	<div class="grid grid-flow-col gap-4">
 		<a href="/" class="link link-hover">Home</a>
 		<a href="/about" class="link link-hover">About Us</a>
-		<a href="/services" class="link link-hover">Services</a>
+		<a href="/features" class="link link-hover">Features</a>
 		<a href="/" class="link link-hover">Press kit</a>
 	</div>
 	<div>

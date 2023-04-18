@@ -1,4 +1,4 @@
-<section class="max-w-6xl mx-auto p-2 flex flex-col gap-4">
+<section class="max-w-7xl mx-auto p-2 flex flex-col gap-4">
 	<h1 class="font-semibold text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-center py-12">About Us</h1>
 	<p class="sm:text-xl">
 		[Your Company Name] was founded by a group of passionate event planners who had a vision of

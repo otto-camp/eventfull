@@ -6,7 +6,7 @@
 </script>
 
 <header class="bg-base-200 border-base-content border-b">
-	<div class="navbar max-w-6xl mx-auto">
+	<div class="navbar max-w-7xl mx-auto">
 		<div class="navbar-start lg:hidden">
 			<button on:click={() => (open = !open)} aria-label="Open the Menu" class="btn btn-ghost ">
 				<svg
@@ -29,7 +29,7 @@
 		</div>
 		<div class="hidden lg:inline-flex lg:navbar-center">
 			<ul class="menu menu-horizontal gap-2 px-1">
-				<li><a href="/about">About Us</a></li>
+				<li><a href="/events">Events</a></li>
 				<li><a href="/features">Features</a></li>
 				<ThemeSwitch />
 			</ul>
@@ -62,7 +62,7 @@
 	</div>
 	{#if open}
 		<nav class="space-y-1 px-2 pt-2 pb-3 bg-base-200 lg:hidden">
-			<a href="/about" class="btn btn-ghost w-full justify-start">About Us</a>
+			<a href="/events" class="btn btn-ghost w-full justify-start">Events</a>
 			<a href="/features" class="btn btn-ghost w-full justify-start">Features</a>
 			{#if data.session}
 				<div class="w-full flex gap-2">
