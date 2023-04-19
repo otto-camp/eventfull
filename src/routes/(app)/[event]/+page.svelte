@@ -4,6 +4,7 @@
 	import { Calendar, Icon, MapPin } from 'svelte-hero-icons';
 
 	export let data: PageServerData;
+	const isEnrolled = data.enrolled ? data.enrolled : false;
 	const event = data.event && data.event[0];
 </script>
 
@@ -35,9 +36,31 @@
 						{event.location}
 					</span>
 				</div>
-				<form action={`/${event.name?.toLowerCase().replace(/\s+/g, '-')}-${event.id}/enroll`} method="post">
-					<button class="btn btn-primary btn-lg btn-wide">Enroll</button>
-				</form>
+				{#if isEnrolled}
+					<form
+						action={`/${event.name?.toLowerCase().replace(/\s+/g, '-')}-${event.id}/cancel`}
+						method="post"
+					>
+						<button class="btn btn-primary btn-lg btn-wide">Cancel</button>
+						<div class="dropdown dropdown-end">
+							<label tabindex="0" class="btn m-1">Click</label>
+							<ul
+								tabindex="0"
+								class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+							>
+								<li><button>Item 1</button></li>
+								<li><button>Item 2</button></li>
+							</ul>
+						</div>
+					</form>
+				{:else}
+					<form
+						action={`/${event.name?.toLowerCase().replace(/\s+/g, '-')}-${event.id}/enroll`}
+						method="post"
+					>
+						<button class="btn btn-primary btn-lg btn-wide">Enroll</button>
+					</form>
+				{/if}
 			</div>
 			<p class="text-lg md:text-2xl">
 				{event.long_description ? event.long_description : event.description}
