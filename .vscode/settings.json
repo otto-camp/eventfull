@@ -5,6 +5,7 @@
 		"examplecorp",
 		"neoconfetti",
 		"Postgrest",
+		"skeletonlabs",
 		"xyzcorp"
 	],
 	"typescript.tsdk": "node_modules\\typescript\\lib"

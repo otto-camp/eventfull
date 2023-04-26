@@ -15,10 +15,12 @@
 	"devDependencies": {
 		"@neoconfetti/svelte": "^1.0.0",
 		"@playwright/test": "^1.28.1",
+		"@skeletonlabs/skeleton": "^1.2.0",
 		"@supabase/auth-helpers-sveltekit": "^0.9.0",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/adapter-netlify": "^2.0.6",
 		"@sveltejs/kit": "^1.5.0",
+		"@tailwindcss/forms": "^0.5.3",
 		"@tailwindcss/line-clamp": "^0.4.2",
 		"@types/cookie": "^0.5.1",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
@@ -45,7 +47,6 @@
 		"@sentry/node": "^7.46.0",
 		"@sentry/svelte": "^7.46.0",
 		"@supabase/supabase-js": "^2.10.0",
-		"daisyui": "^2.51.3",
 		"dayjs": "^1.11.7",
 		"netlify": "^13.1.2"
 	}

@@ -25,7 +25,7 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section class="px-2 mt-2 max-w-7xl mx-auto">
+<section class="px-2 mt-2 max-w-7xl mx-auto overflow-hidden isolate">
 	{#if error}
 		<p>{error.message}</p>
 	{/if}

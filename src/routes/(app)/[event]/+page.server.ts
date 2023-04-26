@@ -10,7 +10,6 @@ export const load: PageServerLoad = async ({ params: { event }, parent }) => {
 		const { data, error: err } = await supabase.from('event').select('*').eq('id', url);
 
 		const user = await (await parent()).session;
-
 		const { data: registration, error: registrationErr } = await supabase
 			.from('registration')
 			.select('*')

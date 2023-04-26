@@ -2,6 +2,8 @@
 	import { invalidateAll } from '$app/navigation';
 	import { supabase } from '$lib/supabase';
 	import { onMount } from 'svelte';
+	import '@skeletonlabs/skeleton/styles/all.css';
+	import '@skeletonlabs/skeleton/themes/theme-gold-nouveau.css';
 	import './styles.css';
 
 	onMount(() => {
@@ -17,6 +19,4 @@
 	});
 </script>
 
-<div class="app">
-	<slot />
-</div>
+<slot />
