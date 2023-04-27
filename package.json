@@ -47,7 +47,10 @@
 		"@sentry/node": "^7.46.0",
 		"@sentry/svelte": "^7.46.0",
 		"@supabase/supabase-js": "^2.10.0",
-		"dayjs": "^1.11.7",
-		"netlify": "^13.1.2"
+		"@tiptap/core": "^2.0.3",
+		"@tiptap/extension-bubble-menu": "^2.0.3",
+		"@tiptap/pm": "^2.0.3",
+		"@tiptap/starter-kit": "^2.0.3",
+		"dayjs": "^1.11.7"
 	}
 }
