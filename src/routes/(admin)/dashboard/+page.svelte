@@ -14,7 +14,10 @@
 	data.session ? (user = data.session.user) : {};
 
 	onMount(async () => {
-		const { data, error: err } = await supabase.from('event').select('*');
+		const { data, error: err } = await supabase
+			.from('event')
+			.select('*')
+			.eq('organizer_id', user.id);
 		events = data;
 		error = err;
 	});

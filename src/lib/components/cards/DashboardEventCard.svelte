@@ -54,7 +54,7 @@
 			<button
 				aria-label="event control"
 				on:click={() => (openDropdown = !openDropdown)}
-				class="z-50 text-token "><Icon src={EllipsisVertical} size="24" solid /></button
+				class="z-50 text-white"><Icon src={EllipsisVertical} size="24" solid /></button
 			>
 			{#if openDropdown}
 				<ul
