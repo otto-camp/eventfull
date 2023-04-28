@@ -4,8 +4,14 @@
 	import { deleteEvent } from '$lib/db';
 	import { Calendar, EllipsisVertical, Icon, MapPin, PencilSquare, Trash } from 'svelte-hero-icons';
 	import { slide } from 'svelte/transition';
-	import { modalStore, type ModalSettings, Modal } from '@skeletonlabs/skeleton';
+	import {
+		modalStore,
+		type ModalSettings,
+		Modal,
+		type ModalComponent
+	} from '@skeletonlabs/skeleton';
 	import { browser } from '$app/environment';
+	import CustomEventModal from '../modals/CustomEventModal.svelte';
 
 	export let event: Event;
 
@@ -16,7 +22,7 @@
 		location.reload();
 	};
 
-	const deleteModal = (name: string) => {
+	const deleteModal = () => {
 		const del: ModalSettings = {
 			type: 'confirm',
 			title: event.name ? event.name : 'Delete Event',
@@ -28,16 +34,31 @@
 			modalStore.trigger(del);
 		}
 	};
+
+	const editModal = () => {
+		const comp: ModalComponent = { ref: CustomEventModal, props: { event: event } };
+		const edit: ModalSettings = {
+			type: 'component',
+			component: comp,
+			title: 'Custom Form',
+			response(r) {
+				console.log(r);
+			}
+		};
+		modalStore.trigger(edit);
+	};
+	console.log('dashboard card');
+
 </script>
 
 <div class="card variant-ghost-tertiary">
 	<div class="relative mb-4">
 		<img
-			src={event.image_url ? event.image_url : 'https://picsum.photos/1000/1000'}
+			src={event.image_url}
 			alt={event.name}
 			width="500"
 			height="500"
-			class="rounded-token object-cover aspect-square"
+			class="rounded-token object-cover aspect-square bg-surface-400-500-token"
 		/>
 		<div
 			class="absolute bottom-0 left-0 right-0 bg-gradient-to-b from-transparent to-black/70 pt-12 rounded-b-box px-2 pb-2 flex justify-between"
@@ -59,18 +80,15 @@
 			{#if openDropdown}
 				<ul
 					transition:slide={{ duration: 300 }}
-					class="absolute right-0 z-50 top-full p-4 variant-filled-surface rounded-token flex flex-col gap-2 mt-2"
+					class="absolute right-0 z-[999] top-full p-4 variant-filled-surface rounded-token flex flex-col gap-2 mt-2"
 				>
 					<li>
-						<button
-							on:click={() => deleteModal(event.name ? event.name : '')}
-							class="btn variant-ghost-error"
-						>
+						<button on:click={deleteModal} class="btn variant-ghost-error">
 							<Icon src={Trash} size="24" /> <span>Delete</span>
 						</button>
 					</li>
 					<li>
-						<button class="btn variant-ghost-secondary w-full">
+						<button on:click={editModal} class="btn variant-ghost-secondary w-full">
 							<Icon src={PencilSquare} size="24" /> <span>Edit</span>
 						</button>
 					</li>
@@ -91,18 +109,3 @@
 </div>
 
 <Modal />
-
-<!-- {#if showModal}
-	<div class="fixed flex items-center justify-center inset-0 bg-black/60 h-full w-full">
-		<div class="modal-box relative">
-			<h3 class="text-lg font-bold">Delete event!</h3>
-			<p class="py-4">
-				You've been selected for a chance to get one year of subscription to use Wikipedia for free!
-			</p>
-			<div class="btn-group w-full">
-				<button on:click={() => (showModal = false)} class="btn flex-1 text-lg">Cancel</button>
-				<button on:click={handleDeleteEvent} class="btn btn-error flex-1 text-lg">Delete</button>
-			</div>
-		</div>
-	</div>
-{/if} -->

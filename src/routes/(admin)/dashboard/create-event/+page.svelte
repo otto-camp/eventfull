@@ -78,23 +78,14 @@
 					{/each}
 				</select>
 			</div>
-			<!-- <div class="md:col-span-2">
-				<label for="longDescription" class="font-medium text-token"
-					>Long Description</label
-				>
-				<textarea
-					rows="4"
-					id="longDescription"
-					name="longDescription"
-					class="textarea textarea-bordered w-full resize-none"
-				/>
-			</div> -->
 		</div>
 		<div class="w-full max-w-4xl">
 			<label for="description" class="font-medium text-token">Short Description</label>
 			<textarea rows="3" id="description" name="description" class="textarea w-full" />
 		</div>
-		<Editor />
+		<Editor
+			content="Our text editor makes it easy for you to create content for your upcoming event. With our editor, you can format text, add images, and customize the layout to fit your needs."
+		/>
 		<button
 			type="submit"
 			class="btn md:text-2xl variant-filled-primary md:btn-lg w-full max-w-[19rem] mx-4"

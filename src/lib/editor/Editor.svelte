@@ -8,6 +8,8 @@
 	let element: any;
 	let editor: any;
 
+	export let content: string | null;
+
 	const headings = [1, 2, 3, 4, 5, 6];
 
 	onMount(() => {
@@ -19,11 +21,8 @@
 					element: bubbleMenu
 				})
 			],
-			content: `
-        <h1>Hello Svelte! 🌍️ </h1>
-			  <p>This editor is running in Svelte.</p>
-				<p>Select some text to see the bubble menu popping up.</p>
-      `,
+			content: content,
+
 			onTransaction: () => {
 				// force re-render so `editor.isActive` works as expected
 				editor = editor;

@@ -34,111 +34,115 @@
 <svelte:window bind:innerWidth />
 
 <AppShell>
-	<header class="block lg:hidden bg-surface-100-800-token">
-		<nav class="flex justify-between items-center px-4 py-2">
-			<button on:click={() => (open = !open)} class="btn variant-soft-surface"
-				><Icon src={Bars3} size="24" />
-			</button>
-			<a href="/" class="btn btn-lg variant-glass-primary text-2xl">Event</a>
-			<span class="w-16" />
-		</nav>
-	</header>
+	<svelte:fragment slot="header">
+		<div class="block lg:hidden bg-surface-100-800-token">
+			<nav class="flex justify-between items-center px-4 py-2">
+				<button on:click={() => (open = !open)} class="btn variant-soft-surface"
+					><Icon src={Bars3} size="24" />
+				</button>
+				<a href="/" class="btn btn-lg variant-glass-primary text-2xl">Event</a>
+				<span class="w-16" />
+			</nav>
+		</div>
+	</svelte:fragment>
 
-	{#if mobile && open}
-		<aside
-			in:fly={{ opacity: 1, x: -400, duration: 500 }}
-			out:fly={{ opacity: 1, x: -400, duration: 500 }}
-			class="fixed top-0 bottom-0 left-0 p-2 w-64 overflow-y-auto bg-surface-100-800-token z-[9999]"
-		>
-			<div class="grid h-full content-between">
-				<div class="flex flex-col gap-8">
-					<div class="flex justify-end">
-						<button class="btn variant-soft-surface p-2" on:click={() => (open = false)}
-							><Icon src={XMark} size="24" />
-						</button>
+	<svelte:fragment slot="sidebarLeft">
+		{#if mobile && open}
+			<div
+				in:fly={{ opacity: 1, x: -400, duration: 500 }}
+				out:fly={{ opacity: 1, x: -400, duration: 500 }}
+				class="fixed top-0 bottom-0 left-0 p-2 w-64 overflow-y-auto bg-surface-100-800-token z-[9999]"
+			>
+				<div class="grid h-full content-between">
+					<div class="flex flex-col gap-8">
+						<div class="flex justify-end">
+							<button class="btn variant-soft-surface p-2" on:click={() => (open = false)}
+								><Icon src={XMark} size="24" />
+							</button>
+						</div>
+						<div class="flex justify-center">
+							<Avatar
+								src={user?.user_metadata.avatar_url}
+								alt={user?.email}
+								width="w-32"
+								border="border-4 border-surface-900-50-token"
+							/>
+							<!-- <span class="uppercase text-xl font-medium">{user?.user_metadata.full_name}</span> -->
+						</div>
+						<nav aria-label="sidebar navigation">
+							<ul class="flex flex-col gap-4">
+								{#each links as link}
+									<li>
+										<a
+											href={link.href}
+											class="inline-flex gap-4 btn sm:text-xl variant-soft-surface w-full justify-start"
+											><Icon src={link.logo} size="24" /> {link.name}</a
+										>
+									</li>
+								{/each}
+							</ul>
+						</nav>
 					</div>
-					<div class="flex justify-center">
-						<Avatar
-							src={user?.user_metadata.avatar_url}
-							alt={user?.email}
-							width="w-32"
-							border="border-4 border-surface-900-50-token"
-						/>
+					<div class="flex flex-col gap-2">
+						<div class="flex justify-between btn variant-soft-surface">
+							<span> Dark Mode </span>
+							<LightSwitch />
+						</div>
+						<form action="/logout" method="post" class="m-0 p-0">
+							<button type="submit" class="btn bg-black/70 w-full justify-start gap-4 text-white"
+								><Icon src={ArrowLeftOnRectangle} size="24" /> Sign Out</button
+							>
+						</form>
+					</div>
+				</div>
+			</div>
+		{:else}
+			<div
+				class="lg:fixed lg:block hidden top-0 bottom-0 left-0 p-2 w-64 overflow-y-hidden bg-surface-100-800-token"
+			>
+				<div class="grid content-between h-full">
+					<div class="flex flex-col gap-8">
+						<div class="flex justify-center">
+							<a href="/" class="btn btn-lg variant-glass-primary w-full text-2xl">Event</a>
+						</div>
+						<div class="flex items-center gap-4 flex-col">
+							<Avatar
+								src={user?.user_metadata.avatar_url}
+								alt={user?.email}
+								width="w-32"
+								border="border-4 border-surface-900-50-token"
+							/>
+						</div>
 						<!-- <span class="uppercase text-xl font-medium">{user?.user_metadata.full_name}</span> -->
+						<nav aria-label="sidebar navigation">
+							<ul class="flex flex-col gap-4">
+								{#each links as link}
+									<li>
+										<a
+											href={link.href}
+											class="inline-flex gap-4 btn sm:text-xl variant-soft-surface w-full justify-start"
+											><Icon src={link.logo} size="24" /> {link.name}</a
+										>
+									</li>
+								{/each}
+							</ul>
+						</nav>
 					</div>
-					<nav aria-label="sidebar navigation">
-						<ul class="flex flex-col gap-4">
-							{#each links as link}
-								<li>
-									<a
-										href={link.href}
-										class="inline-flex gap-4 btn sm:text-xl variant-soft-surface w-full justify-start"
-										><Icon src={link.logo} size="24" /> {link.name}</a
-									>
-								</li>
-							{/each}
-						</ul>
-					</nav>
-				</div>
-				<div class="flex flex-col gap-2">
-					<div class="flex justify-between btn variant-soft-surface">
-						<span> Dark Mode </span>
-						<LightSwitch />
+					<div class="flex flex-col gap-2">
+						<div class="flex justify-between btn variant-soft-surface">
+							<span> Dark Mode </span>
+							<LightSwitch />
+						</div>
+						<form action="/logout" method="post" class="m-0 p-0">
+							<button type="submit" class="btn bg-black/70 text-white w-full justify-start gap-4"
+								><Icon src={ArrowLeftOnRectangle} size="24" /> Sign Out</button
+							>
+						</form>
 					</div>
-					<form action="/logout" method="post" class="m-0 p-0">
-						<button type="submit" class="btn bg-black/70 w-full justify-start gap-4 text-white"
-							><Icon src={ArrowLeftOnRectangle} size="24" /> Sign Out</button
-						>
-					</form>
-				</div>
-			</div>
-		</aside>
-	{:else}
-		<aside
-			class="lg:fixed lg:block hidden top-0 bottom-0 left-0 p-2 w-64 overflow-y-hidden bg-surface-100-800-token"
-		>
-			<div class="grid content-between h-full">
-				<div class="flex flex-col gap-8">
-					<div class="flex justify-center">
-						<a href="/" class="btn btn-lg variant-glass-primary w-full text-2xl">Event</a>
-					</div>
-					<div class="flex items-center gap-4 flex-col">
-						<Avatar
-							src={user?.user_metadata.avatar_url}
-							alt={user?.email}
-							width="w-32"
-							border="border-4 border-surface-900-50-token"
-						/>
-					</div>
-					<!-- <span class="uppercase text-xl font-medium">{user?.user_metadata.full_name}</span> -->
-					<nav aria-label="sidebar navigation">
-						<ul class="flex flex-col gap-4">
-							{#each links as link}
-								<li>
-									<a
-										href={link.href}
-										class="inline-flex gap-4 btn sm:text-xl variant-soft-surface w-full justify-start"
-										><Icon src={link.logo} size="24" /> {link.name}</a
-									>
-								</li>
-							{/each}
-						</ul>
-					</nav>
-				</div>
-				<div class="flex flex-col gap-2">
-					<div class="flex justify-between btn variant-soft-surface">
-						<span> Dark Mode </span>
-						<LightSwitch />
-					</div>
-					<form action="/logout" method="post" class="m-0 p-0">
-						<button type="submit" class="btn bg-black/70 text-white w-full justify-start gap-4"
-							><Icon src={ArrowLeftOnRectangle} size="24" /> Sign Out</button
-						>
-					</form>
 				</div>
 			</div>
-		</aside>
-	{/if}
+		{/if}
+	</svelte:fragment>
 
 	<main class="lg:ml-64 min-h-screen">
 		<slot />
