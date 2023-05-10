@@ -11,17 +11,15 @@
 	import { fly } from 'svelte/transition';
 	import type { LayoutData } from './$types';
 	import { AppShell, Avatar, LightSwitch } from '@skeletonlabs/skeleton';
+	import type { MetadataJson } from '../../Types';
 
 	export let data: LayoutData;
+	const user = data.user;
+	const metadata = user.metadata as MetadataJson;
+	console.log(metadata.full_name);
+
 	let innerWidth: number;
 	let open = false;
-	const user = data.session && data.session.user;
-
-	const initial: string = user?.user_metadata.full_name
-		.split(' ')
-		.map((word: string) => word.charAt(0).toUpperCase())
-		.join('');
-
 	$: mobile = innerWidth < 1024;
 
 	const links = [
@@ -33,6 +31,10 @@
 
 <svelte:window bind:innerWidth />
 
+<svelte:head>
+	<title>{metadata.full_name} | Dashboard</title>
+</svelte:head>
+
 <AppShell>
 	<svelte:fragment slot="header">
 		<div class="block lg:hidden bg-surface-100-800-token">
@@ -40,7 +42,7 @@
 				<button on:click={() => (open = !open)} class="btn variant-soft-surface"
 					><Icon src={Bars3} size="24" />
 				</button>
-				<a href="/" class="btn btn-lg variant-glass-primary text-2xl">Event</a>
+				<a href="/" class="btn btn-lg variant-glass-primary text-2xl">EventFull</a>
 				<span class="w-16" />
 			</nav>
 		</div>
@@ -62,8 +64,8 @@
 						</div>
 						<div class="flex justify-center">
 							<Avatar
-								src={user?.user_metadata.avatar_url}
-								alt={user?.email}
+								src={metadata.picture.toString()}
+								alt={user.email}
 								width="w-32"
 								border="border-4 border-surface-900-50-token"
 							/>
@@ -103,12 +105,12 @@
 				<div class="grid content-between h-full">
 					<div class="flex flex-col gap-8">
 						<div class="flex justify-center">
-							<a href="/" class="btn btn-lg variant-glass-primary w-full text-2xl">Event</a>
+							<a href="/" class="btn btn-lg variant-glass-primary w-full text-2xl">EventFull</a>
 						</div>
 						<div class="flex items-center gap-4 flex-col">
 							<Avatar
-								src={user?.user_metadata.avatar_url}
-								alt={user?.email}
+								src={metadata.picture.toString()}
+								alt={user.email}
 								width="w-32"
 								border="border-4 border-surface-900-50-token"
 							/>
@@ -152,7 +154,7 @@
 		<div
 			class="lg:ml-64 p-10 bg-surface-100-800-token flex flex-col justify-center items-center gap-4"
 		>
-			<div class="grid grid-flow-col gap-4">
+			<div class="grid grid-cols-2 xs:grid-cols-4 gap-4">
 				<a href="/" class="btn hover:underline">Home</a>
 				<a href="/about" class="btn hover:underline">About Us</a>
 				<a href="/features" class="btn hover:underline">Features</a>
@@ -187,7 +189,7 @@
 				</div>
 			</div>
 			<div>
-				<p>Copyright © 2023 - All right reserved by [TITLE]</p>
+				<p>Copyright © 2023 - All right reserved by Eventfull</p>
 			</div>
 		</div>
 	</svelte:fragment>

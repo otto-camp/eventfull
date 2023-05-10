@@ -9,94 +9,76 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
-      event: {
+      conferences: {
         Row: {
-          category: string | null
-          date: string | null
-          description: string | null
+          duration: number | null
           id: number
-          image_url: string | null
-          inserted_at: string
-          location: string | null
           long_description: string | null
+          speakers: Json | null
+        }
+        Insert: {
+          duration?: number | null
+          id?: number
+          long_description?: string | null
+          speakers?: Json | null
+        }
+        Update: {
+          duration?: number | null
+          id?: number
+          long_description?: string | null
+          speakers?: Json | null
+        }
+      }
+      events: {
+        Row: {
+          attendees: string | null
+          created_at: string | null
+          date: string | null
+          id: number
+          invited_emails: string[] | null
+          location: string | null
           name: string | null
           organizer_id: string | null
-          organizer_name: string | null
-          type: string | null
-          updated_at: string
+          thumbnail_url: string | null
         }
         Insert: {
-          category?: string | null
+          attendees?: string | null
+          created_at?: string | null
           date?: string | null
-          description?: string | null
           id?: number
-          image_url?: string | null
-          inserted_at?: string
+          invited_emails?: string[] | null
           location?: string | null
-          long_description?: string | null
           name?: string | null
           organizer_id?: string | null
-          organizer_name?: string | null
-          type?: string | null
-          updated_at?: string
+          thumbnail_url?: string | null
         }
         Update: {
-          category?: string | null
+          attendees?: string | null
+          created_at?: string | null
           date?: string | null
-          description?: string | null
           id?: number
-          image_url?: string | null
-          inserted_at?: string
+          invited_emails?: string[] | null
           location?: string | null
-          long_description?: string | null
           name?: string | null
           organizer_id?: string | null
-          organizer_name?: string | null
-          type?: string | null
-          updated_at?: string
+          thumbnail_url?: string | null
         }
       }
-      event_statistics: {
+      profiles: {
         Row: {
-          created_at: string | null
-          enrolled: number
-          event_id: number
-          viewed: number
+          email: string | null
+          id: string
+          metadata: Json | null
         }
         Insert: {
-          created_at?: string | null
-          enrolled?: number
-          event_id?: number
-          viewed?: number
+          email?: string | null
+          id: string
+          metadata?: Json | null
         }
         Update: {
-          created_at?: string | null
-          enrolled?: number
-          event_id?: number
-          viewed?: number
-        }
-      }
-      registration: {
-        Row: {
-          attendee_email: string | null
-          attendee_name: string | null
-          created_at: string | null
-          event_id: number | null
-          id: number
-        }
-        Insert: {
-          attendee_email?: string | null
-          attendee_name?: string | null
-          created_at?: string | null
-          event_id?: number | null
-          id?: number
-        }
-        Update: {
-          attendee_email?: string | null
-          attendee_name?: string | null
-          created_at?: string | null
-          event_id?: number | null
-          id?: number
+          email?: string | null
+          id?: string
+          metadata?: Json | null
         }
       }
     }
@@ -104,18 +86,7 @@ export interface Database {
       [_ in never]: never
     }
     Functions: {
-      delete_event: {
-        Args: {
-          e_id: number
-        }
-        Returns: undefined
-      }
-      update_event_statistic_viewed: {
-        Args: {
-          id: number
-        }
-        Returns: undefined
-      }
+      [_ in never]: never
     }
     Enums: {
       [_ in never]: never

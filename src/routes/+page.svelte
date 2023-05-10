@@ -3,8 +3,8 @@
 	import Header from '$lib/components/Header.svelte';
 	import Testimonial from '$lib/components/homepage/Testimonial.svelte';
 	import type { LayoutData } from './$types';
+	import Features from '$lib/components/homepage/Features.svelte';
 	export let data: LayoutData;
-	let open = false;
 </script>
 
 <svelte:head>
@@ -14,33 +14,41 @@
 
 <Header {data} />
 
-<div class="relative w-full md:block hidden">
-	<img src="/hero.webp" alt="hero" class="absolute inset-0 object-cover h-screen w-full" />
-</div>
-
-<section
-	class="md:h-[calc(100vh-10rem)] relative py-16 md:py-20 backdrop-blur-[1px] md:bg-surface-900/10 px-2 max-w-7xl mx-auto grid gap-12 md:text-white"
->
-	<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl md:text-center font-black">
-		Your Free, Simple Event Organizer
-	</h1>
-	<p class="text-lg md:text-xl font-semibold md:px-24 md:text-center">
-		Create unforgettable events effortlessly with [TITLE]. Invite guests, track RSVPs, and customize
-		your page. Sign up now for the simple and free way to plan!
-	</p>
-	<div class="max-w-sm h-fit mx-auto flex justify-center items-center gap-2">
-		{#if data.session}
-			<a href="/dashboard" class="btn btn-lg variant-filled-primary font-medium">Go To Dashboard</a>
-		{:else}
-			<a href="/login" class="btn btn-lg variant-filled-primary flex-1 font-medium">Join Now</a>
-			<a href="/events" class="btn btn-lg variant-outline-primary bg-black/30 font-medium">Events</a
+<main class="max-w-7xl mx-auto grid grid-cols-1 gap-8 lg:grid-cols-2 px-4">
+	<div class="flex flex-col justify-between gap-8 h-[90vh] w-full">
+		<div
+			class="bg-slate-200 dark:bg-slate-700 h-full w-full rounded-hero lg:rounded-tl-none px-6 flex flex-col justify-evenly"
+		>
+			<h1>Your Free, Simple Event Organizer</h1>
+			<p>Create unforgettable events effortlessly with Eventfull.</p>
+		</div>
+		<div class="flex flex-col md:flex-row gap-8">
+			<div
+				class="w-full h-32 lg:h-60 bg-stone-700 dark:bg-stone-200 rounded-hero lg:rounded-b-none lg:mb-0 mb-4 flex items-center justify-center"
 			>
-		{/if}
+				{#if data.session}
+					<a href="/dashboard" class="btn btn-lg variant-filled-primary font-medium break-words"
+						>Go To Dashboard</a
+					>
+				{:else}
+					<a href="/login" class="btn btn-lg variant-filled-primary font-medium">Join Now</a>
+				{/if}
+			</div>
+			<div
+				class="w-full h-32 lg:h-60 bg-stone-400 dark:bg-stone-500 rounded-hero lg:rounded-b-none lg:mb-0 mb-4 flex items-center justify-center"
+			>
+				<a href="/events" class="btn btn-lg variant-outline-primary font-medium">Events</a>
+			</div>
+		</div>
 	</div>
-</section>
+	<img
+		src="/hero.webp"
+		alt="Hero"
+		class="object-cover h-[90vh] w-full rounded-tl-hero hidden lg:block"
+	/>
+</main>
+<Features />
 
 <Testimonial />
 
 <Footer />
-
-

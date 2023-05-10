@@ -1,12 +1,12 @@
 <div class="p-10 bg-surface-100-800-token flex flex-col justify-center items-center gap-4">
-	<div class="grid grid-flow-col gap-4">
+	<div class="flex flex-col md:flex-row gap-4">
 		<a href="/" class="btn hover:underline">Home</a>
 		<a href="/about" class="btn hover:underline">About Us</a>
 		<a href="/features" class="btn hover:underline">Features</a>
 		<a href="/" class="btn hover:underline">Press kit</a>
 	</div>
 	<div>
-		<div class="grid grid-flow-col gap-4">
+		<div class="flex gap-4">
 			<a aria-label="github" href="https://github.com/otto-camp"
 				><svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -33,5 +33,5 @@
 			>
 		</div>
 	</div>
-	<p>Copyright © 2023 - All right reserved by [TITLE]</p>
+	<p>Copyright © 2023 - All right reserved by Eventfull</p>
 </div>

@@ -7,6 +7,7 @@ module.exports = {
 			'../**/*.{html,js,svelte,ts}'
 		)
 	],
+
 	theme: {
 		extend: {
 			animation: {
@@ -32,6 +33,10 @@ module.exports = {
 		screens: {
 			'xs': '540px',
 			...defaultTheme.screens
+		},
+		borderRadius: {
+			'hero': '3rem',
+			...defaultTheme.borderRadius
 		}
 	},
 	darkMode: 'class',

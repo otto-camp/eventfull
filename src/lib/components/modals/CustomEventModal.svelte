@@ -33,7 +33,7 @@
 		modalStore.close();
 	};
 </script>
-
+<!-- SATIRLARI TEK TEK GÜNCELLEMEYEN ŞEKİLDE YAP -->
 {#if $modalStore[0]}
 	<div class="w-full h-full flex justify-center items-center">
 		<div class="card p-4 w-modal space-y-4 overflow-y-auto">

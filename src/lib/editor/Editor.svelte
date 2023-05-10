@@ -43,15 +43,15 @@
 </script>
 
 <div
-	class="relative bg-surface-200-700-token rounded-token border border-surface-500 px-4 pb-4 pt-2 w-full max-w-4xl"
+	class="relative bg-surface-200-700-token rounded-token border border-surface-500 px-4 pb-4 pt-2 w-full"
 >
 	{#if editor}
-		<div class="mb-4">
+		<div class="mb-4 border-b border-secondary-500-400-token pb-2">
 			{#each headings as h}
 				<button
 					type="button"
 					on:click={() => editor.chain().focus().toggleHeading({ level: h }).run()}
-					class="btn"
+					class="btn hover:bg-black/30"
 					class:active={editor.isActive('heading', { level: h })}
 				>
 					H{h}
@@ -60,7 +60,7 @@
 			<button
 				type="button"
 				on:click={() => editor.chain().focus().setParagraph().run()}
-				class="btn"
+				class="btn hover:bg-black/30"
 				class:active={editor.isActive('paragraph')}
 			>
 				P

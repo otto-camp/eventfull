@@ -19,10 +19,10 @@
 				<Icon src={Bars3} size="24" />
 			</button>
 		</div>
-		<a href="/" class="btn btn-lg py-2 variant-glass-primary text-2xl">Event</a>
+		<a href="/" class="btn btn-lg py-2 variant-glass-primary text-2xl">EventFull</a>
 		<div class="hidden lg:flex items-center justify-center">
 			<ul class="lg:flex pl-2 py-2">
-				<li><a href="/events" class="variant-glass btn-lg btn py-2">Events</a></li>
+				<li><a href="/" class="variant-glass btn-lg btn py-2">Events</a></li>
 				<li><a href="/features" class="variant-glass btn-lg btn py-2">Features</a></li>
 				{#if data.session}
 					<li>
@@ -51,7 +51,7 @@
 	</nav>
 	{#if open}
 		<nav class="space-y-1 px-2 pt-2 pb-3 lg:hidden" transition:slide>
-			<a href="/events" class="btn variant-soft-surface w-full justify-start">Events</a>
+			<a href="/" class="btn variant-soft-surface w-full justify-start">Events</a>
 			<a href="/features" class="btn variant-soft-surface w-full justify-start">Features</a>
 			{#if data.session}
 				<a

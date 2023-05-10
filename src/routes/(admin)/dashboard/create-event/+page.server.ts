@@ -1,59 +1,65 @@
 import { PUBLIC_SUPABASE_URL } from '$env/static/public';
-import { error } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import { randomUUID } from 'crypto';
+import type { Event } from '../../../../Types';
 import type { Actions } from './$types';
+
 export const actions: Actions = {
-	default: async ({ request, locals: { supabase } }) => {
+	conference: async ({ request, locals: { supabase, getSession } }) => {
 		const rawData = await request.formData();
-		const picture = rawData.get('picture');
+		const thumbnail = rawData.get('thumbnail');
+		console.log(thumbnail);
 
-		const {
-			data: { user },
-			error: authError
-		} = await supabase.auth.getUser();
+		const session = await getSession();
 
-		if (user === null || user === undefined) {
-			throw error(404, {
-				message: 'User not found',
-				code: ''
-			});
+		if (!session) {
+			throw redirect(302, '/login');
 		}
 
-		if (authError) {
-			throw error(400, {
-				message: authError.message,
-				code: authError.name
-			});
-		}
+		if (thumbnail) {
+			const { data: thumb, error: storageError } = await supabase.storage
+				.from('event')
+				.upload(session.user.email + '/' + randomUUID(), thumbnail);
 
-		if (user.email) {
-			if (picture) {
-				const { data, error: storageError } = await supabase.storage
-					.from('event')
-					.upload(user.email + '/' + randomUUID(), picture);
-				if (storageError) {
-					throw error(404, {
-						message: storageError.message,
-						code: storageError.name
-					});
-				}
-				const { error: eventError } = await supabase.from('event').insert({
+			if (storageError) {
+				throw error(404, {
+					message: storageError.message,
+					code: storageError.name
+				});
+			}
+
+			const { data: event, error: eventError } = await supabase
+				.from('events')
+				.insert({
 					name: rawData.get('name'),
 					location: rawData.get('location'),
 					date: rawData.get('date'),
-					organizer_id: user.id,
-					organizer_name: user.user_metadata.name,
-					type: rawData.get('type'),
-					category: rawData.get('category'),
-					description: rawData.get('description'),
-					long_description: rawData.get('longDescription'),
-					image_url: PUBLIC_SUPABASE_URL + '/storage/v1/object/public/event/' + data.path
+					invited_emails: [''],
+					thumbnail_url: PUBLIC_SUPABASE_URL + '/storage/v1/object/public/event/' + thumb,
+					organizer_id: session.user.id
+				})
+				.select()
+				.returns<Event[]>();
+
+			if (eventError) {
+				throw error(403, {
+					message: eventError.message,
+					code: eventError.code
+				});
+			}
+
+			if (event) {
+				const { error: confError } = await supabase.from('conferences').insert({
+					id: event[0].id,
+					long_description: 'LONG DESCRIPTION',
+					speakers: rawData.get('speakers'),
+					duration: rawData.get('duration')
 				});
 
-				if (eventError) {
-					throw error(404, {
-						message: eventError.message,
-						code: eventError.code
+				if (confError) {
+					throw error(403, {
+						message: confError.message,
+						code: confError.code
 					});
 				}
 			}
